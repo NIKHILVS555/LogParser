@@ -62,12 +62,12 @@ Log LogFile::ParseLog(string line)
 		      break;
 	       }
 	}
-     Log newlog;
-     newlog.setPid(pid);
+     Log newlog(pid,tid,dt,lgmsg,lglvl);
+    /* newlog.setPid(pid);
      newlog.setTid(tid);
      newlog.setlglevel(lglvl);
      newlog.setDate(dt);
-     newlog.setMessage(lgmsg);
+     newlog.setMessage(lgmsg);*/
 
      return newlog;
 }

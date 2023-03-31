@@ -49,3 +49,11 @@ char Log::getlglevel()
 }
 	
 
+Log::Log(int pid, int tid, time_t dt, string msg, char lglvl)
+{
+	Pid = pid;
+	Tid = tid;
+	LogDate = dt;
+	Message = msg;
+	Lglevel = lglvl;
+}

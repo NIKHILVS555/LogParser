@@ -22,8 +22,5 @@ void setMessage(string);
 string  getMessage();
 void setlglevel(char);
 char  getlglevel();
-Log()
-{
-	Pid=0;
-}
+Log(int pid, int tid, time_t dt, string msg, char lglvl);
 };
