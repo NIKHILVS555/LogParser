@@ -9,5 +9,6 @@ class LogFile
    void setLogs(list<Log>);
    Log ParseLog(string);
    bool readLogFile(string);
-   time_t ParseDateTime(string);
+   Date ParseDate(string);
+   Time ParseTime(string);
 };

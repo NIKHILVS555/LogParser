@@ -1,13 +1,14 @@
 #include "LogFilterDriver.h"
-
-list<Log> LogFilterDriver::FilterLog(int pid, int tid,time_t starttime, time_t endtime)
+#include <iostream>
+list<Log> LogFilterDriver::FilterLog(int pid, int tid,Time starttime, Time endtime)
 {
 
 	list<Log> FilterLog;
 	auto logs = fileHandle.getLogs();
 	for (auto itr = logs.begin();itr != logs.end();itr++)
 	{
-		
+	
+		//std::cout <<itr->Pid << itr->Tid<<endl;	
 		if (pid != 0)
 		{
 			if ( itr->Pid != pid)
@@ -18,9 +19,9 @@ list<Log> LogFilterDriver::FilterLog(int pid, int tid,time_t starttime, time_t e
                         if ( itr->Tid != tid)
                            continue;
                 }
-		if( starttime != (time_t)(-1) && endtime != (time_t)(-1))
+		if( starttime.hour != -1 && endtime.hour != -1)
 		{
-		    if (itr->LogDate< starttime || itr->LogDate > endtime)
+		    if (itr->LogTime < starttime || itr->LogTime > endtime)
 		         continue;
 		}
 

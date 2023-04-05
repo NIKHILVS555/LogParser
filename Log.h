@@ -1,26 +1,26 @@
 #include<string>
-#include <ctime>
+#include "DateTime.h"
 using namespace std;
 class Log
 {
 public:
 	int Pid;
 	int Tid;
-	time_t LogDate;
-	//time LogTime;
+	Date LogDate;
+	Time LogTime;
 	string Message;
 	char Lglevel;
 void setPid(int);
 int  getPid();
 void setTid(int);
 int  getTid();
-void setDate(time_t);
-time_t  getDate();
-/*void setTime(time);
-time  getTime();*/
+void setDate(Date);
+Date  getDate();
+void setTime(Time);
+Time  getTime();
 void setMessage(string);
 string  getMessage();
 void setlglevel(char);
 char  getlglevel();
-Log(int pid, int tid, time_t dt, string msg, char lglvl);
+Log(int pid, int tid, Date dt, Time tt, string msg, char lglvl);
 };

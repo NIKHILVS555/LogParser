@@ -15,22 +15,22 @@ int Log::getTid()
 {
         return Tid;
 }
-void Log::setDate(time_t dt)
+void Log::setDate(Date dt)
 {
         LogDate = dt;
 }
-time_t Log::getDate()
+Date Log::getDate()
 {
         return LogDate;
 }
-/*void Log::setTime(time dt)
+void Log::setTime(Time dt)
 {
         LogTime = dt;
 }
-time Log::getTime()
+Time Log::getTime()
 {
         return LogTime;
-}*/
+}
 void Log::setMessage(string msg)
 {
         Message = msg;
@@ -49,11 +49,12 @@ char Log::getlglevel()
 }
 	
 
-Log::Log(int pid, int tid, time_t dt, string msg, char lglvl)
+Log::Log(int pid, int tid, Date dt, Time tt, string msg, char lglvl)
 {
 	Pid = pid;
 	Tid = tid;
 	LogDate = dt;
+	LogTime = tt;
 	Message = msg;
 	Lglevel = lglvl;
 }

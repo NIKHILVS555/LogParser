@@ -5,11 +5,11 @@ int main(int argc, char * argv[])
 {	
     ArgParser cmdParser;
     LogFilterDriver driver;
-
+    //cout << "Arg count "<<argc; 
     if(cmdParser.cmdOptionExists(argv, argv+argc, "-h"))
     {
         // Do stuff
-	cout <<"Help me \n";
+	cout <<"./LogFilter -p <pid> -t <tid> -f <filename> -st <starttime> -et <endtime>";
     }
 
     cmdParser.getCmdOption(argv, argv + argc);
@@ -17,13 +17,14 @@ int main(int argc, char * argv[])
 
     
     driver.ProcessFile(cmdParser.getfilename());
-    auto logs = driver.FilterLog(cmdParser.getPid(),cmdParser.getTid(),(time_t)(-1),(time_t)(-1));
+  //  cout<<cmdParser.getPid()<<cmdParser.getTid()<<cmdParser.getstarttime().getTime()<<cmdParser.getendtime().getTime();
+    auto logs = driver.FilterLog(cmdParser.getPid(),cmdParser.getTid(),cmdParser.getstarttime(),cmdParser.getendtime());
     for (auto itr = logs.begin();itr != logs.end();itr++)
         {
-	 cout<<itr->Pid << " \t "<< itr->Tid<<"\t"<<itr->Message<<"\n";
+	 cout<<itr->LogDate.getDate()<<" "<<itr->LogTime.getTime()<<"\t"<<itr->getPid() << " \t "<< itr->getTid()<<"\t"<<itr->Lglevel<<" "<<itr->getMessage()<<"\n";
 	}
-    cout <<cmdParser.getPid();
-    cout<<cmdParser.getTid();
+    //cout <<cmdParser.getPid();
+    //cout<<cmdParser.getTid();
     
     return 0;
 }

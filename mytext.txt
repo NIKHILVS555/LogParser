@@ -1,9 +1,8 @@
 01-01 00:00:00.000     6     4 I memblock_reserve: 0x34559 setup_arch+0x64/0x1dc
-01-01 00:00:00.000     6     4 I Machine model: Qualcomm Technologies, Inc. SA8155 GM-VCU MID Virtual Machine
+01-01 00:02:00.000     6     4 I Machine model: Qualcomm Technologies, Inc. SA8155 GM-VCU MID Virtual Machine
 01-01 00:00:00.000     6     4 I earlycon: pl11 at MMIO 0x000000001c090000 (options '')
 01-01 00:00:00.000     5     4 I printk  : bootconsole [pl11] enabled
-01-01 00:00:00.000     5     3 I efi     : Getting EFI parameters from FDT:
+01-01 00:01:00.000     5     3 I efi     : Getting EFI parameters from FDT:
 01-01 00:00:00.000     5     3 I efi     : UEFI not found.
-01-01 00:00:00.000     5     3 I Reserved memory: created CMA memory pool at 0x00000000cdc00000, size 32 MiB
+01-01 00:06:00.000     5     3 I Reserved memory: created CMA memory pool at 0x00000000cdc00000, size 32 MiB
 01-01 00:00:00.000     5     3 I OF      : reserved mem: initialized node linux,cma, compatible id shared-dma-pool
-

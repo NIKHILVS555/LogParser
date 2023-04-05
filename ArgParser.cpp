@@ -11,9 +11,9 @@ void ArgParser::getCmdOption(char ** begin, char ** end)
 			Pid = atoi(*(++itr));
 		if ( strcmp(*itr, "-t") == 0)
                         Tid = atoi(*(++itr));
-		if ( strcmp(*itr, "-stime")==0)
+		if ( strcmp(*itr, "-st")==0)
                         starttime = ParseTime(*(++itr));
-		 if ( strcmp(*itr, "-etime")==0)
+		 if ( strcmp(*itr, "-et")==0)
                         endtime = ParseTime(*(++itr));
 		 if ( strcmp(*itr, "-f") == 0)
                         filename = *(++itr);
@@ -36,15 +36,29 @@ int ArgParser:: getTid()
 {
 	return Tid;
 }
-time_t ArgParser::getstarttime()
+Time ArgParser::getstarttime()
 {
 	return starttime;
 }
-time_t ArgParser::getendtime()
+Time ArgParser::getendtime()
 {
 	return endtime;
 }
-time_t ArgParser::ParseTime(string stime)
+Time ArgParser::ParseTime(string stime)
 {
-	 return time(0);
+
+	int hh = atoi(stime.substr(0, 2).c_str());
+        int mm = atoi(stime.substr(3, 2).c_str());
+        int ss = atoi(stime.substr(6, 2).c_str());
+        int ms = atoi(stime.substr(9, 3).c_str());	
+	return Time(hh,mm,ss,ms);
+
+}
+ArgParser::ArgParser()
+{
+        Pid = 0;
+        Tid = 0;
+        starttime.setTime(-1,-1,-1,-1);
+        endtime.setTime(-1,-1,-1,-1);
+        filename = "mytext.txt";
 }

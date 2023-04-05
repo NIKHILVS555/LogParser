@@ -9,16 +9,28 @@ void LogFile::setLogs(list<Log> newData)
 {
    Logs = newData;
 }
-time_t LogFile::ParseDateTime(string strTime)
+Time LogFile::ParseTime(string strTime)
 {
-	return time(0);
+	int hh = atoi(strTime.substr(0, 2).c_str());
+        int mm = atoi(strTime.substr(3, 2).c_str());
+        int ss = atoi(strTime.substr(6, 2).c_str());
+        int ms = atoi(strTime.substr(9, 3).c_str());
+        return Time(hh,mm,ss,ms);
+}
+Date LogFile::ParseDate(string strDate)
+{
+	int dd = atoi(strDate.substr(0, 2).c_str());
+        int mm = atoi(strDate.substr(3, 2).c_str());
+        return Date(dd,mm,1970);
+
 }
 Log LogFile::ParseLog(string line)
 {
 	stringstream ss(line);
 	string word;
 	int pos =1;
-        time_t dt;
+        Date dt;
+	Time tt;
 	int pid, tid;
 	char lglvl;
 	string lgmsg;
@@ -28,8 +40,8 @@ Log LogFile::ParseLog(string line)
 		{
 			string tmp;
 			ss>>tmp;
-			word +=" "+ tmp;
-                        dt = ParseDateTime(word);
+                        dt = ParseDate(word);
+			tt = ParseTime(tmp);
 			pos ++;
 			continue;
 		}
@@ -62,7 +74,7 @@ Log LogFile::ParseLog(string line)
 		      break;
 	       }
 	}
-     Log newlog(pid,tid,dt,lgmsg,lglvl);
+     Log newlog(pid,tid,dt,tt,lgmsg,lglvl);
     /* newlog.setPid(pid);
      newlog.setTid(tid);
      newlog.setlglevel(lglvl);
@@ -90,6 +102,9 @@ bool LogFile::readLogFile(string filename)
       return true;
    }
    else
+   {
+      cout<<"File open failed";
 	   return false;
+   }
 
 }

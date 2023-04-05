@@ -1,21 +1,25 @@
 #include <string>
 #include <algorithm>
-#include <ctime>
+
+#include "DateTime.h"
+//extern class Time;
+//extern class Date;
 using namespace std;
 class ArgParser
 {
 	int Pid;
 	int Tid;
-	time_t starttime;
-	time_t endtime;
+	Time starttime;
+	Time endtime;
 	string filename;
 	public:
 	void getCmdOption(char ** begin, char ** end);
 	bool cmdOptionExists(char** begin, char** end, const std::string& option);
 	int getPid();
 	int getTid();
-	time_t getstarttime();
-	time_t getendtime();
+	Time getstarttime();
+	Time getendtime();
 	string getfilename();
-	time_t ParseTime(string );
+	Time ParseTime(string );
+	ArgParser();
 };

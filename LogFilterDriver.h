@@ -3,6 +3,6 @@ class LogFilterDriver
 {
 	LogFile fileHandle;
 	public:
-	list<Log> FilterLog(int, int , time_t, time_t );
+	list<Log> FilterLog(int, int , Time, Time );
 	void ProcessFile(string);
 };
